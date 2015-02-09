@@ -138,7 +138,6 @@ $(function() {
       var div = $("#"+validation);
       var icon = $("#"+validation+"Icon");
       var css = this.options.css;
-      console.log(css);
       if(result){
         div.css('color', css.ok.color);
         icon.removeClass(css.nok.class).addClass(css.ok.class);
