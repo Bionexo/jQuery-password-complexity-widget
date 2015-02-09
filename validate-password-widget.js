@@ -7,6 +7,7 @@ $(function() {
       validations: {
       },
       submitButton: null,
+      div: "<div class='row' id=\"{id}\" ><i id=\"{id}Icon\" class=\"validate-password-icon fa fa-times\"></i></div>",
       css: {
         nok: { color: 'red', class: 'fa fa-times' },
         ok: { color: 'green', class: 'fa fa-check' }
@@ -45,10 +46,9 @@ $(function() {
       }
     },
 
-    _createValidationRow: function(id){
-      div = "<div class='row' id=\""+id+"\" ><i id=\""+id+"Icon\" class=\"validate-password-icon fa fa-times\"></i></div>";
-      this.options.validationsDiv.append(div);
-      return $("#"+id);
+    _createValidationRow: function(objId){
+      this.options.validationsDiv.append(this._interpolate(this.options.div, {id: objId}));
+      return $("#"+objId);
     },
 
     _refresh: function(){
