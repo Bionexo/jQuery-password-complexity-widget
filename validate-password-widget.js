@@ -6,7 +6,12 @@ $(function() {
       validationsDiv: $("#password_validations"),
       validations: {
       },
-      submitButton: null
+      submitButton: null,
+      css: {
+        nok: { color: 'red', class: 'fa fa-times' },
+        ok: { color: 'green', class: 'fa fa-check' }
+      }
+
     },
 
     _create: function(){
@@ -132,12 +137,14 @@ $(function() {
     _setEvaluationResult: function(validation, result){
       var div = $("#"+validation);
       var icon = $("#"+validation+"Icon");
+      var css = this.options.css;
+      console.log(css);
       if(result){
-        div.css('color', 'green');
-        icon.removeClass("fa-times").addClass("fa-check");
+        div.css('color', css.ok.color);
+        icon.removeClass(css.nok.class).addClass(css.ok.class);
       }else{
-        div.css('color', 'red');
-        icon.removeClass("fa-check").addClass("fa-times");
+        div.css('color', css.nok.color);
+        icon.removeClass(css.ok.class).addClass(css.nok.class);
       }
     },
 
