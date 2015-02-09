@@ -72,6 +72,16 @@ $(function() {
       this._super(key, value);
     },
 
+    _interpolate: function (string, o) {
+      return string.replace(/{([^{}]*)}/g,
+        function (a, b) {
+          var r = o[b];
+          return typeof r === 'string' || typeof r === 'number' ? r : a;
+        }
+      );
+    },
+
+
     validate: function(){
       var isValid = true;
       value = this.element.val();
